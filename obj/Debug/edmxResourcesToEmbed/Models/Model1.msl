@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Concours_recrutementModelStoreContainer" CdmEntityContainer="Concours_recrutementEntities">
+    <EntitySetMapping Name="Concours">
+      <EntityTypeMapping TypeName="Concours_recrutementModel.Concour">
+        <MappingFragment StoreEntitySet="Concours">
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="ID_concours" ColumnName="ID_concours" />
+          <ScalarProperty Name="Nom_concours" ColumnName="Nom_concours" />
+          <ScalarProperty Name="Date_concours" ColumnName="Date_concours" />
+          <ScalarProperty Name="Date_limite" ColumnName="Date_limite" />
+          <ScalarProperty Name="Nombre_de_poste" ColumnName="Nombre_de_poste" />
+          <ScalarProperty Name="ID_grade" ColumnName="ID_grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gestionnaires">
+      <EntityTypeMapping TypeName="Concours_recrutementModel.Gestionnaire">
+        <MappingFragment StoreEntitySet="Gestionnaires">
+          <ScalarProperty Name="confirmer_mot_de_passe" ColumnName="confirmer_mot_de_passe" />
+          <ScalarProperty Name="ID_gestionnaire" ColumnName="ID_gestionnaire" />
+          <ScalarProperty Name="Nom_gestionnaire" ColumnName="Nom_gestionnaire" />
+          <ScalarProperty Name="Prénom_gestionnaire" ColumnName="Prénom_gestionnaire" />
+          <ScalarProperty Name="Adresse_mail" ColumnName="Adresse_mail" />
+          <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="Concours_recrutementModel.Grade">
+        <MappingFragment StoreEntitySet="Grades">
+          <ScalarProperty Name="ID_grade" ColumnName="ID_grade" />
+          <ScalarProperty Name="Nom_grade" ColumnName="Nom_grade" />
+          <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inscriptions">
+      <EntityTypeMapping TypeName="Concours_recrutementModel.Inscription">
+        <MappingFragment StoreEntitySet="Inscription">
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="Mot_de_passe" ColumnName="Mot_de_passe" />
+          <ScalarProperty Name="ID_inscription" ColumnName="ID_inscription" />
+          <ScalarProperty Name="Curriculum_vitae" ColumnName="Curriculum_vitae" />
+          <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+          <ScalarProperty Name="Date_dépot" ColumnName="Date_dépot" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+          <ScalarProperty Name="Numéro_CIN" ColumnName="Numéro_CIN" />
+          <ScalarProperty Name="Téléphone" ColumnName="Téléphone" />
+          <ScalarProperty Name="Date_naissance" ColumnName="Date_naissance" />
+          <ScalarProperty Name="Lieu_naissance" ColumnName="Lieu_naissance" />
+          <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+          <ScalarProperty Name="ID_gestionnaire" ColumnName="ID_gestionnaire" />
+          <ScalarProperty Name="ID_concours" ColumnName="ID_concours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profils">
+      <EntityTypeMapping TypeName="Concours_recrutementModel.Profil">
+        <MappingFragment StoreEntitySet="Profils">
+          <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+          <ScalarProperty Name="Nom_profil" ColumnName="Nom_profil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

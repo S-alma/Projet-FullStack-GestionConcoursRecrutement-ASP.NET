@@ -1,0 +1,21 @@
+﻿@model WebApplication.Models.Gestionnaire
+
+@{
+    ViewBag.Title = "Delete";
+}
+<br>
+<br>
+<h1><strong>Êtes-vous sûr de vouloir supprimer ce compte ?</strong></h1>
+<br>
+<div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class= "btn btn-primary"  /> |
+            @Html.ActionLink("Revenir à la liste des gestionnaires", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,153 @@
+﻿@model WebApplication.Models.Inscription
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<br>
+<h1><strong>Formulaire d'inscription pour candidat(e)</strong></h1>
+<br>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Nom </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Prénom </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prénom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prénom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Numéro de CIN </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Numéro_CIN, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Numéro_CIN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Numéro téléphone </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Téléphone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Téléphone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Date de naissance </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date_naissance, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date_naissance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Lieu de naissance </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Lieu_naissance, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lieu_naissance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Code postal </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.code_postal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.code_postal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Sexe </strong></div>
+        <div class="col-md-10">
+            <fieldset>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" required name="title" id="r1"><label for="r1">&nbsp;Femme</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" required name="title" id="r2"><label for="r2">&nbsp;Homme</label>
+            </fieldset>
+            @Html.ValidationMessageFor(model => model.Sexe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Ville </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Ville, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Ville, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Statut </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Statut, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Statut, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Date de dépot </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date_dépot, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date_dépot, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Curriculum Vitae </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Curriculum_vitae, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Curriculum_vitae, "", new { @class = "text-danger" })
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                <input type="file" id="profile_pic" name="profile_pic"
+                       accept=".jpg, .jpeg, .png">
+            </div>
+        </form>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2"><strong> Diplome </strong></div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Diplome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Diplome, "", new { @class = "text-danger" })
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                <input type="file" id="profile_pic" name="profile_pic"
+                       accept=".jpg, .jpeg, .png">
+            </div>
+        </form>
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Inscription</button>
+            @*<input type="submit" value="Inscription" class="btn btn-primary" />*@
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

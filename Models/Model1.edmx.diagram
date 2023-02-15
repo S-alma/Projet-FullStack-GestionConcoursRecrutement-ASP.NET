@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca6117597fba48289f928cd9eaea30b9" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="Concours_recrutementModel.Concour" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Concours_recrutementModel.Gestionnaire" Width="1.5" PointX="4" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Concours_recrutementModel.Grade" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Concours_recrutementModel.Inscription" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Concours_recrutementModel.Profil" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="Concours_recrutementModel.FK_Concours_Grades" ManuallyRouted="false" />
+        <AssociationConnector Association="Concours_recrutementModel.FK_Inscription_Concours" ManuallyRouted="false" />
+        <AssociationConnector Association="Concours_recrutementModel.FK_Inscription_Gestionnaires" ManuallyRouted="false" />
+        <AssociationConnector Association="Concours_recrutementModel.FK_Grades_Profils" ManuallyRouted="false" />
+        <AssociationConnector Association="Concours_recrutementModel.FK_Inscription_Profils" ManuallyRouted="true" >
+          <ConnectorPoint PointX="1.5" PointY="4.2879850260416656" />
+          <ConnectorPoint PointX="1.5" PointY="5.0195287826915953" />
+          <ConnectorPoint PointX="7.284378" PointY="5.0195287826915953" />
+          <ConnectorPoint PointX="7.284378" PointY="5.49705078125" />
+          <ConnectorPoint PointX="7.5" PointY="5.49705078125" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

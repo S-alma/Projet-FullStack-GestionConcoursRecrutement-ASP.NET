@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MEFRA Site </title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <br />
+            <img src="~/fonts/Ministere.gif" width="1130" height="180" />
+            <br /><br />
+            <div class="navbar-header" style="text-align: center">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" style="text-align: center">
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Se connecter", "Choose", "Gestionnaires")</li>
+                    <li>@Html.ActionLink("Ajouter Concours", "Create", "AjouterConcours")</li>
+                    <li>@Html.ActionLink("S'inscrire", "Choose", "Inscription")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <br><br><br><br>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <br />
+            <div class="text-center p-1">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                    <p class="text" style="color: white"><strong>Suivez nos réseaux sociaux </strong></p>
+                    <div class="text-center">
+                        <a href="#" class="text-center" style="color: white; margin-top: 10px; margin-bottom:10px;">Twitter</a>
+                        <span style="color: white"> &nbsp;&nbsp;&nbsp;&nbsp; </span>
+                        <a href="#" class="text-center" style="color: white; margin-top: 10px; margin-bottom:10px;">Facebook</a>
+                        <span style="color: white"> &nbsp;&nbsp;&nbsp;&nbsp;  </span>
+                        <a href="#" class="text-center" style="color: white; margin-top: 10px; margin-bottom:10px;">Instagram</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br />
+            <div id="footer" class="text-center" style="color:white">
+                <p>© Copyright MEFRA - 2021 - <strong>Tous droits réservés</strong> </p>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

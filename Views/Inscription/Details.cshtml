@@ -1,0 +1,124 @@
+﻿
+@model WebApplication.Models.Inscription
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br>
+<h1><strong>Informations sur l'inscription</strong></h1>
+<br>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong> Nom : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            <strong> Prénom : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prénom)
+        </dd>
+
+        <dt>
+            <strong> Numéro CIN : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numéro_CIN)
+        </dd>
+
+        <dt>
+            <strong> Téléphone : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Téléphone)
+        </dd>
+
+        <dt>
+            <strong> Date de naissance : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_naissance)
+        </dd>
+
+        <dt>
+            <strong> Lieu de naissance : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu_naissance)
+        </dd>
+
+        <dt>
+            <strong> Code postal : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code_postal)
+        </dd>
+
+        <dt>
+            <strong> Sexe : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexe)
+        </dd>
+
+        <dt>
+            <strong> Ville : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville)
+        </dd>
+
+        <dt>
+            <strong> Statut : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Statut)
+        </dd>
+
+        <dt>
+            <strong> Date de dépot </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_dépot)
+        </dd>
+
+        <dt>
+            <strong> Curriculum Vitae : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Curriculum_vitae)
+        </dd>
+
+        <dt>
+            <strong> Diplome : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diplome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.ID_inscription }) |
+    @Html.ActionLink("Revenir à la liste des candidats", "Index")
+</p>

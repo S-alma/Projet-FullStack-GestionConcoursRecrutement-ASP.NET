@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication.Models.Concour>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br>
+<h1><strong>Liste des Concours </strong></h1>
+<br>
+
+<p>
+    @Html.ActionLink("Créer nouveau concours", "Create")
+</p>
+<br>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            <strong> Nom Concours </strong>
+        </th>
+        <th>
+            <strong> Date du concours </strong>
+        </th>
+        <th>
+            <strong> Date limite </strong>
+        </th>
+        <th>
+            <strong> Nombre de postes </strong>
+        </th>
+        <th>
+            <strong> Statut </strong>
+        </th>
+        <th>
+            <strong> Grade </strong>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nom_concours)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date_concours)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date_limite)
+    </td>
+    <th>
+        @Html.DisplayFor(modelItem => item.Nombre_de_poste)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => item.Statut)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => item.ID_grade)
+    </th>
+
+    <td>
+        @Html.ActionLink("Editer", "Edit", new { id = item.ID_concours }) |
+        @Html.ActionLink("Détail", "Details", new { id = item.ID_concours }) |
+        @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_concours })
+    </td>
+</tr>
+    }
+
+</table>

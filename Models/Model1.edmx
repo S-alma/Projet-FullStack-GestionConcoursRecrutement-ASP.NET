@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Concours_recrutementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Concours">
+          <Key>
+            <PropertyRef Name="ID_concours" />
+          </Key>
+          <Property Name="ID_concours" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_concours" Type="varchar" MaxLength="50" />
+          <Property Name="Date_concours" Type="date" />
+          <Property Name="Date_limite" Type="date" />
+          <Property Name="Nombre_de_poste" Type="int" />
+          <Property Name="ID_grade" Type="int" />
+          <Property Name="Statut" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gestionnaires">
+          <Key>
+            <PropertyRef Name="ID_gestionnaire" />
+          </Key>
+          <Property Name="ID_gestionnaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_gestionnaire" Type="varchar" MaxLength="50" />
+          <Property Name="Prénom_gestionnaire" Type="varchar" MaxLength="50" />
+          <Property Name="Adresse_mail" Type="varchar" MaxLength="50" />
+          <Property Name="mot_de_passe" Type="varchar" MaxLength="50" />
+          <Property Name="confirmer_mot_de_passe" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="ID_grade" />
+          </Key>
+          <Property Name="ID_grade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_grade" Type="varchar" MaxLength="50" />
+          <Property Name="ID_profil" Type="int" />
+        </EntityType>
+        <EntityType Name="Inscription">
+          <Key>
+            <PropertyRef Name="ID_inscription" />
+          </Key>
+          <Property Name="ID_inscription" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Curriculum_vitae" Type="varbinary" MaxLength="50" />
+          <Property Name="Diplome" Type="varbinary" MaxLength="50" />
+          <Property Name="Date_dépot" Type="datetime" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Prénom" Type="varchar" MaxLength="50" />
+          <Property Name="Numéro_CIN" Type="varchar" MaxLength="50" />
+          <Property Name="Téléphone" Type="varchar" MaxLength="50" />
+          <Property Name="Date_naissance" Type="date" />
+          <Property Name="Lieu_naissance" Type="varchar" MaxLength="50" />
+          <Property Name="code_postal" Type="varchar" MaxLength="50" />
+          <Property Name="Sexe" Type="varchar" MaxLength="50" />
+          <Property Name="Ville" Type="varchar" MaxLength="50" />
+          <Property Name="ID_profil" Type="int" />
+          <Property Name="ID_gestionnaire" Type="int" />
+          <Property Name="ID_concours" Type="int" />
+          <Property Name="Mot_de_passe" Type="varchar" MaxLength="50" />
+          <Property Name="Statut" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Profils">
+          <Key>
+            <PropertyRef Name="ID_profil" />
+          </Key>
+          <Property Name="ID_profil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_profil" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Concours_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+          <End Role="Concours" Type="Self.Concours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="ID_grade" />
+            </Principal>
+            <Dependent Role="Concours">
+              <PropertyRef Name="ID_grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_Profils">
+          <End Role="Profils" Type="Self.Profils" Multiplicity="0..1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profils">
+              <PropertyRef Name="ID_profil" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="ID_profil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Concours">
+          <End Role="Concours" Type="Self.Concours" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Concours">
+              <PropertyRef Name="ID_concours" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_concours" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Gestionnaires">
+          <End Role="Gestionnaires" Type="Self.Gestionnaires" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestionnaires">
+              <PropertyRef Name="ID_gestionnaire" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_gestionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Profils">
+          <End Role="Profils" Type="Self.Profils" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profils">
+              <PropertyRef Name="ID_profil" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_profil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Concours_recrutementModelStoreContainer">
+          <EntitySet Name="Concours" EntityType="Self.Concours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gestionnaires" EntityType="Self.Gestionnaires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscription" EntityType="Self.Inscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profils" EntityType="Self.Profils" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Concours_Grades" Association="Self.FK_Concours_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Concours" EntitySet="Concours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_Profils" Association="Self.FK_Grades_Profils">
+            <End Role="Profils" EntitySet="Profils" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Concours" Association="Self.FK_Inscription_Concours">
+            <End Role="Concours" EntitySet="Concours" />
+            <End Role="Inscription" EntitySet="Inscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Gestionnaires" Association="Self.FK_Inscription_Gestionnaires">
+            <End Role="Gestionnaires" EntitySet="Gestionnaires" />
+            <End Role="Inscription" EntitySet="Inscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Profils" Association="Self.FK_Inscription_Profils">
+            <End Role="Profils" EntitySet="Profils" />
+            <End Role="Inscription" EntitySet="Inscription" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Concours_recrutementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Concour">
+          <Key>
+            <PropertyRef Name="ID_concours" />
+          </Key>
+          <Property Name="ID_concours" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_concours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_concours" Type="DateTime" Precision="0" />
+          <Property Name="Date_limite" Type="DateTime" Precision="0" />
+          <Property Name="Nombre_de_poste" Type="Int32" />
+          <Property Name="ID_grade" Type="Int32" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_Concours_Grades" FromRole="Concours" ToRole="Grades" />
+          <NavigationProperty Name="Inscriptions" Relationship="Self.FK_Inscription_Concours" FromRole="Concours" ToRole="Inscription" />
+          <Property Name="Statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Gestionnaire">
+          <Key>
+            <PropertyRef Name="ID_gestionnaire" />
+          </Key>
+          <Property Name="ID_gestionnaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_gestionnaire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prénom_gestionnaire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adresse_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inscriptions" Relationship="Self.FK_Inscription_Gestionnaires" FromRole="Gestionnaires" ToRole="Inscription" />
+          <Property Name="confirmer_mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="ID_grade" />
+          </Key>
+          <Property Name="ID_grade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_profil" Type="Int32" />
+          <NavigationProperty Name="Concours" Relationship="Self.FK_Concours_Grades" FromRole="Grades" ToRole="Concours" />
+          <NavigationProperty Name="Profil" Relationship="Self.FK_Grades_Profils" FromRole="Grades" ToRole="Profils" />
+        </EntityType>
+        <EntityType Name="Inscription">
+          <Key>
+            <PropertyRef Name="ID_inscription" />
+          </Key>
+          <Property Name="ID_inscription" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Curriculum_vitae" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Diplome" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Date_dépot" Type="DateTime" Precision="3" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prénom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numéro_CIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Téléphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_naissance" Type="DateTime" Precision="0" />
+          <Property Name="Lieu_naissance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="code_postal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_profil" Type="Int32" />
+          <Property Name="ID_gestionnaire" Type="Int32" />
+          <Property Name="ID_concours" Type="Int32" />
+          <NavigationProperty Name="Concour" Relationship="Self.FK_Inscription_Concours" FromRole="Inscription" ToRole="Concours" />
+          <NavigationProperty Name="Gestionnaire" Relationship="Self.FK_Inscription_Gestionnaires" FromRole="Inscription" ToRole="Gestionnaires" />
+          <NavigationProperty Name="Profil" Relationship="Self.FK_Inscription_Profils" FromRole="Inscription" ToRole="Profils" />
+          <Property Name="Mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Profil">
+          <Key>
+            <PropertyRef Name="ID_profil" />
+          </Key>
+          <Property Name="ID_profil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_profil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grades_Profils" FromRole="Profils" ToRole="Grades" />
+          <NavigationProperty Name="Inscriptions" Relationship="Self.FK_Inscription_Profils" FromRole="Profils" ToRole="Inscription" />
+        </EntityType>
+        <Association Name="FK_Concours_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="0..1" />
+          <End Role="Concours" Type="Self.Concour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="ID_grade" />
+            </Principal>
+            <Dependent Role="Concours">
+              <PropertyRef Name="ID_grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Concours">
+          <End Role="Concours" Type="Self.Concour" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Concours">
+              <PropertyRef Name="ID_concours" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_concours" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Gestionnaires">
+          <End Role="Gestionnaires" Type="Self.Gestionnaire" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestionnaires">
+              <PropertyRef Name="ID_gestionnaire" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_gestionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_Profils">
+          <End Role="Profils" Type="Self.Profil" Multiplicity="0..1" />
+          <End Role="Grades" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profils">
+              <PropertyRef Name="ID_profil" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="ID_profil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscription_Profils">
+          <End Role="Profils" Type="Self.Profil" Multiplicity="0..1" />
+          <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profils">
+              <PropertyRef Name="ID_profil" />
+            </Principal>
+            <Dependent Role="Inscription">
+              <PropertyRef Name="ID_profil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Concours_recrutementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Concours" EntityType="Self.Concour" />
+          <EntitySet Name="Gestionnaires" EntityType="Self.Gestionnaire" />
+          <EntitySet Name="Grades" EntityType="Self.Grade" />
+          <EntitySet Name="Inscriptions" EntityType="Self.Inscription" />
+          <EntitySet Name="Profils" EntityType="Self.Profil" />
+          <AssociationSet Name="FK_Concours_Grades" Association="Self.FK_Concours_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Concours" EntitySet="Concours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Concours" Association="Self.FK_Inscription_Concours">
+            <End Role="Concours" EntitySet="Concours" />
+            <End Role="Inscription" EntitySet="Inscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Gestionnaires" Association="Self.FK_Inscription_Gestionnaires">
+            <End Role="Gestionnaires" EntitySet="Gestionnaires" />
+            <End Role="Inscription" EntitySet="Inscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_Profils" Association="Self.FK_Grades_Profils">
+            <End Role="Profils" EntitySet="Profils" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscription_Profils" Association="Self.FK_Inscription_Profils">
+            <End Role="Profils" EntitySet="Profils" />
+            <End Role="Inscription" EntitySet="Inscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Concours_recrutementModelStoreContainer" CdmEntityContainer="Concours_recrutementEntities">
+          <EntitySetMapping Name="Concours">
+            <EntityTypeMapping TypeName="Concours_recrutementModel.Concour">
+              <MappingFragment StoreEntitySet="Concours">
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="ID_concours" ColumnName="ID_concours" />
+                <ScalarProperty Name="Nom_concours" ColumnName="Nom_concours" />
+                <ScalarProperty Name="Date_concours" ColumnName="Date_concours" />
+                <ScalarProperty Name="Date_limite" ColumnName="Date_limite" />
+                <ScalarProperty Name="Nombre_de_poste" ColumnName="Nombre_de_poste" />
+                <ScalarProperty Name="ID_grade" ColumnName="ID_grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestionnaires">
+            <EntityTypeMapping TypeName="Concours_recrutementModel.Gestionnaire">
+              <MappingFragment StoreEntitySet="Gestionnaires">
+                <ScalarProperty Name="confirmer_mot_de_passe" ColumnName="confirmer_mot_de_passe" />
+                <ScalarProperty Name="ID_gestionnaire" ColumnName="ID_gestionnaire" />
+                <ScalarProperty Name="Nom_gestionnaire" ColumnName="Nom_gestionnaire" />
+                <ScalarProperty Name="Prénom_gestionnaire" ColumnName="Prénom_gestionnaire" />
+                <ScalarProperty Name="Adresse_mail" ColumnName="Adresse_mail" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="Concours_recrutementModel.Grade">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="ID_grade" ColumnName="ID_grade" />
+                <ScalarProperty Name="Nom_grade" ColumnName="Nom_grade" />
+                <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscriptions">
+            <EntityTypeMapping TypeName="Concours_recrutementModel.Inscription">
+              <MappingFragment StoreEntitySet="Inscription">
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Mot_de_passe" ColumnName="Mot_de_passe" />
+                <ScalarProperty Name="ID_inscription" ColumnName="ID_inscription" />
+                <ScalarProperty Name="Curriculum_vitae" ColumnName="Curriculum_vitae" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Date_dépot" ColumnName="Date_dépot" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+                <ScalarProperty Name="Numéro_CIN" ColumnName="Numéro_CIN" />
+                <ScalarProperty Name="Téléphone" ColumnName="Téléphone" />
+                <ScalarProperty Name="Date_naissance" ColumnName="Date_naissance" />
+                <ScalarProperty Name="Lieu_naissance" ColumnName="Lieu_naissance" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+                <ScalarProperty Name="ID_gestionnaire" ColumnName="ID_gestionnaire" />
+                <ScalarProperty Name="ID_concours" ColumnName="ID_concours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profils">
+            <EntityTypeMapping TypeName="Concours_recrutementModel.Profil">
+              <MappingFragment StoreEntitySet="Profils">
+                <ScalarProperty Name="ID_profil" ColumnName="ID_profil" />
+                <ScalarProperty Name="Nom_profil" ColumnName="Nom_profil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

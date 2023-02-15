@@ -1,0 +1,59 @@
+﻿@model WebApplication.Models.Gestionnaire
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br>
+<h1><strong>Informations sur le compte de l'utilisateur</strong></h1>
+<br>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong> Nom : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_gestionnaire)
+        </dd>
+
+        <dt>
+            <strong> Prénom : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prénom_gestionnaire)
+        </dd>
+
+        <dt>
+            <strong> Adresse mail : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse_mail)
+        </dd>
+
+        <dt>
+            <strong> Mot de passe : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mot_de_passe)
+        </dd>
+
+        <dt>
+            <strong> Confirmer mot de passe : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confirmer_mot_de_passe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.ID_gestionnaire }) |
+    @Html.ActionLink("Revenir à la liste des gestionnaires", "Index")
+</p>

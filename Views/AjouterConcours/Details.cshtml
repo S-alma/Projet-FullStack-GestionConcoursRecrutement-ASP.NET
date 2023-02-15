@@ -1,0 +1,67 @@
+﻿@model WebApplication.Models.Concour
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br>
+<h3><strong>Informations sur le Concours ajouter</strong></h3>
+<br>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong> Nom Concours : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_concours)
+        </dd>
+
+        <dt>
+            <strong> Date Concours : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_concours)
+        </dd>
+
+        <dt>
+            <strong> Date limite : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_limite)
+        </dd>
+
+        <dt>
+            <strong> Nombre de postes : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_de_poste)
+        </dd>
+
+        <dt>
+            <strong> Statut : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Statut)
+        </dd>
+
+        <dt>
+            <strong> Grade : </strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_grade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.ID_concours }) |
+    @Html.ActionLink("Revenir à la liste des concours", "Index")
+</p>
